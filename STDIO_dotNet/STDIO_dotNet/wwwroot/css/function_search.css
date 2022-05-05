@@ -1,0 +1,35 @@
+﻿body {
+
+}
+
+.function-container {
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    right: 20px;
+}
+
+.search {
+    margin-left: 16px;
+}
+
+.search input {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding: 4px;
+    outline: none;
+}
+
+.add-student {
+    box-shadow: 1px 2px #ccc;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.option {
+    padding: 0 4px;
+    margin: 0 4px;
+    cursor: pointer;
+}

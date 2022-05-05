@@ -34,3 +34,6 @@ D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDI
 D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\STDIO_dotNet.pdb
 D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\STDIO_dotNet.genruntimeconfig.cache
 D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\STDIO_dotNet.csproj.CopyComplete
+D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\Student\Index.cshtml.g.cs
+D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\Major\Index.cshtml.g.cs
+D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\University\Index.cshtml.g.cs

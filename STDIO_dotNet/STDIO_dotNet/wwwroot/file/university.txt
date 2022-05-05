@@ -1,0 +1,3 @@
+TRUONG01|Đại học Khoa Học|HUSC
+TRUONG02|Duy Tân|DTU
+TRUONG03|Đại học Kinh Tế|DUE

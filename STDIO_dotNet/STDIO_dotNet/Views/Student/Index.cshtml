@@ -1,0 +1,60 @@
+﻿@model StudentHandler
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="text-center">
+
+    <h1 class="display-4"> Student Info </h1>
+
+    <div class="function-container">
+            <div class="add-student">
+                <i class="bi bi-plus-circle"></i>
+                <span>Add Student</span>
+            </div>
+            <div class="search">
+                <i class="bi bi-search"></i>
+                <input type="search" id="search" name="search" placeholder="Search student...">
+            </div>
+    </div>
+
+       
+
+
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Birthdate</th>
+          <th scope="col">MajorID</th>
+          <th scope="col">UniversityID</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach(var student in Model.GetStudentList())
+        {
+            <tr>
+                <td>@student.StudentID</td>
+                <td>@student.StudentName</td>
+                <td>@student.GetGender()</td>
+                <td>@student.StudentBirthDate</td>
+                <td>@student.MajorID</td>
+                <td>@student.UniversityID</td>
+                <td>
+                    <span class="option">
+                        <i class="bi bi-pencil"></i>
+                    </span>
+                    <span class="option">
+                        <i class="bi bi-trash3"></i>
+                    </span>                    
+                </td>
+            </tr>
+        }
+      </tbody>
+    </table>
+</div>

@@ -1,0 +1,50 @@
+﻿@model MajorHandler
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="text-center">
+
+<h1 class="display-4"> Major Info </h1>
+    
+    <div class="function-container">
+            <div class="add-student">
+                <i class="bi bi-plus-circle"></i>
+                <span>Add Major</span>
+            </div>
+            <div class="search">
+                <i class="bi bi-search"></i>
+                <input type="search" id="search" name="search" placeholder="Search major...">
+            </div>
+    </div>
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Class ID</th>
+                <th scope="col">Major Name</th>
+                <th scope="col">Major ID</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var major in Model.GetMajorList())
+            {
+                <tr>
+                    <td>@major.ClassID</td>
+                    <td>@major.MajorName</td>
+                    <td>@major.MajorID</td>
+                    <td>
+                        <span class="option">
+                            <i class="bi bi-pencil"></i>
+                        </span>
+                        <span class="option">
+                            <i class="bi bi-trash3"></i>
+                        </span>                    
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
