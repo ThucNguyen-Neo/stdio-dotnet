@@ -37,3 +37,6 @@ D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDI
 D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\Student\Index.cshtml.g.cs
 D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\Major\Index.cshtml.g.cs
 D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\University\Index.cshtml.g.cs
+D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\Student\Edit.cshtml.g.cs
+D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\Major\Edit.cshtml.g.cs
+D:\Software Engineering\Training\STDIO\dotNet - student\dotNet\STDIO_dotNet\STDIO_dotNet\obj\Debug\netcoreapp3.1\Razor\Views\University\Edit.cshtml.g.cs

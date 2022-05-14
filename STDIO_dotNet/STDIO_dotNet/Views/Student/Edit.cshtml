@@ -1,0 +1,65 @@
+﻿@model Student
+     
+<form asp-action="SubmitEdit" asp-controller="Student" method="post">      
+          <div class="form-group row">
+            <label for="StudentID" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" asp-for="@Model.StudentID" name="StudentID" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="StudentName" class="col-sm-2 col-form-label">Tên</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="StudentName" asp-for="@Model.StudentName" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="StudentGender" class="col-sm-2 col-form-label">Giới tính</label>
+            <div class="col-sm-10 d-flex">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="StudentGender" id="male" value="true" required>
+                  <label class="form-check-label" for="male">
+                    Nam
+                  </label>
+                </div>
+                <div class="form-check ml-4">
+                  <input class="form-check-input" type="radio" name="StudentGender" id="female" value="false" required>
+                  <label class="form-check-label" for="female">
+                    Nữ
+                  </label>
+                </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="StudentBirthDate" class="col-sm-2 col-form-label">Ngày sinh</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control"  name="StudentBirthDate" min="1900-01-01" max="2020-12-31" asp-for="@Model.StudentBirthDate" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Chuyên ngành</label>
+            <div class="col-sm-10">
+                <select name="MajorID" class="form-select" aria-label="Default select example" asp-for="@Model.MajorID" required>
+                    <option disabled selected value=""> Chọn chuyên ngành </option>
+                    @foreach(var major in @ViewData["MH"] as List<Major>)
+                    {
+                        <option value="@major.MajorID">@major.MajorName</option>
+                    }
+                </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Trường đại học</label>
+            <div class="col-sm-10">
+                <select name="UniversityID" class="form-select" aria-label="Default select example" asp-for="@Model.UniversityID" required>
+                    <option disabled selected value=""> Chọn trường đại học </option>
+                    @foreach(var university in @ViewData["UH"] as List<University>)
+                    {
+                        <option value="@university.UniversityAbbr">@university.UniversityName</option>
+                    }
+                </select>
+            </div>
+          </div>
+          
+        <button type="submit" class="btn btn-primary">Save changes</button>
+</form>

@@ -53,6 +53,28 @@ namespace STDIO_dotNet.Models
             }
         }
 
+        public void WriteAppendUniversityListToFile(List<University> university)
+        {
+            using (StreamWriter sw = File.AppendText(url))
+            {
+                foreach (var u in university)
+                {
+                    sw.WriteLine($"{u.UniversityID}|{u.UniversityName}|{u.UniversityAbbr}");
+                }
+            }
+        }
+
+        public void OverWriteUniversityListToFile(List<University> university)
+        {
+            using (StreamWriter sw = new StreamWriter(url))
+            {
+                foreach (var u in university)
+                {
+                    sw.WriteLine($"{u.UniversityID}|{u.UniversityName}|{u.UniversityAbbr}");
+                }
+            }
+        }
+
         public void ShowUniversity()
         {
             foreach (var u in UniversityList)
@@ -68,6 +90,13 @@ namespace STDIO_dotNet.Models
         public bool UniversityAvailable(string uniAbbr)
         {
             return UniversityList.Exists(x => x.UniversityAbbr == uniAbbr);
+        }
+
+        public void CopyValue(University UOrigin, University UDestination)
+        {
+            UOrigin.UniversityID = UDestination.UniversityID;
+            UOrigin.UniversityName = UDestination.UniversityName;
+            UOrigin.UniversityAbbr = UDestination.UniversityAbbr;
         }
     }
 }

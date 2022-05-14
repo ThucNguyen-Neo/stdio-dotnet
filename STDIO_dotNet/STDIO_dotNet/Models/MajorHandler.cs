@@ -21,6 +21,28 @@ namespace STDIO_dotNet.Models
             return MajorList;
         }
 
+        public void WriteAppendMajorListToFile(List<Major> majors)
+        {
+            using (StreamWriter sw = File.AppendText(url))
+            {
+                foreach (var m in majors)
+                {
+                    sw.WriteLine($"{m.ClassID}|{m.MajorName}|{m.MajorID}");
+                }
+            }
+        }
+
+        public void OverWriteMajorListToFile(List<Major> majors)
+        {
+            using (StreamWriter sw = new StreamWriter(url))
+            {
+                foreach (var m in majors)
+                {
+                    sw.WriteLine($"{m.ClassID}|{m.MajorName}|{m.MajorID}");
+                }
+            }
+        }
+
         public void GetMajorFromFile()
         {
             try
@@ -66,6 +88,12 @@ namespace STDIO_dotNet.Models
         public bool MajorAvailable(string majorID)
         {
             return MajorList.Exists(x => x.MajorID == majorID);
+        }
+
+        public void CopyMajorValue(Major MOrigin, Major MDestination)
+        {
+            MOrigin.MajorName = MDestination.MajorName;
+            MOrigin.MajorID = MDestination.MajorID;
         }
     }
 }

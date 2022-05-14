@@ -8,15 +8,18 @@
 <div class="text-center">
 
     <h1 class="display-4"> Student Info </h1>
+    <h3 style="color: red">@ViewData["msg"]</h3>
 
     <div class="function-container">
-            <div class="add-student">
+            <div class="add-student" data-toggle="modal" data-target="#createModal">
                 <i class="bi bi-plus-circle"></i>
                 <span>Add Student</span>
             </div>
             <div class="search">
-                <i class="bi bi-search"></i>
-                <input type="search" id="search" name="search" placeholder="Search student...">
+                <form class="d-flex" asp-action="Search" asp-controller="Student">
+                    <input type="search" class="form-control" name="name" placeholder="Search student...">
+                    <button class="btn btn-primary ml-2" type="submit"> <i class="bi bi-search"></i></button>
+                </form>
             </div>
     </div>
 
@@ -36,25 +39,107 @@
         </tr>
       </thead>
       <tbody>
-        @foreach(var student in Model.GetStudentList())
+        @foreach(var student in @ViewData["SH"] as List<Student>)
         {
             <tr>
                 <td>@student.StudentID</td>
                 <td>@student.StudentName</td>
                 <td>@student.GetGender()</td>
-                <td>@student.StudentBirthDate</td>
+                <td>@student.StudentBirthDate.ToString("dd-MM-yyyy")</td>
                 <td>@student.MajorID</td>
                 <td>@student.UniversityID</td>
                 <td>
-                    <span class="option">
+                    <a class="option" asp-controller="Student" asp-action="Edit" asp-route-id="@student.StudentID">
                         <i class="bi bi-pencil"></i>
-                    </span>
-                    <span class="option">
+                    </a>
+                    <a class="option" asp-controller="Student" asp-action="Delete" asp-route-id="@student.StudentID">
                         <i class="bi bi-trash3"></i>
-                    </span>                    
+                    </a>                    
                 </td>
             </tr>
         }
       </tbody>
     </table>
+</div>
+
+@*Modal*@
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+           <form asp-action="Create" asp-controller="Student" method="post">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalLabel">Thêm mới sinh viên</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <div class="form-group row">
+            <label for="StudentID" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" name="StudentID" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="StudentName" class="col-sm-2 col-form-label">Tên</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="StudentName" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="StudentGender" class="col-sm-2 col-form-label">Giới tính</label>
+            <div class="col-sm-10 d-flex">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="StudentGender" id="male" value="true" required>
+                  <label class="form-check-label" for="male">
+                    Nam
+                  </label>
+                </div>
+                <div class="form-check ml-4">
+                  <input class="form-check-input" type="radio" name="StudentGender" id="female" value="false" required>
+                  <label class="form-check-label" for="female">
+                    Nữ
+                  </label>
+                </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="StudentBirthDate" class="col-sm-2 col-form-label">Ngày sinh</label>
+            <div class="col-sm-10">
+              <input type="date" class="form-control"  name="StudentBirthDate" min="1900-01-01" max="2020-12-31" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Chuyên ngành</label>
+            <div class="col-sm-10">
+                <select name="MajorID" class="form-select" aria-label="Default select example" required>
+                    <option disabled selected value=""> Chọn chuyên ngành </option>
+                    @foreach(var major in @ViewData["MH"] as List<Major>)
+                    {
+                        <option value="@major.MajorID">@major.MajorName</option>
+                    }
+                </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Trường đại học</label>
+            <div class="col-sm-10">
+                <select name="UniversityID" class="form-select" aria-label="Default select example" required>
+                    <option disabled selected value=""> Chọn trường đại học </option>
+                    @foreach(var university in @ViewData["UH"] as List<University>)
+                    {
+                        <option value="@university.UniversityAbbr">@university.UniversityName</option>
+                    }
+                </select>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+        </form>
 </div>

@@ -65,30 +65,30 @@ namespace STDIO_dotNet.Models
             }
         }
 
-        public void WriteStudentListToFile(List<Student> students)
+        public void WriteAppendStudentListToFile(List<Student> students)
         {
-            try
+            List<Student> studentList = GetStudentList();
+            using (StreamWriter sw = File.AppendText(url))
             {
-                using (StreamWriter sw = new StreamWriter(url, false, Encoding.UTF8))
+                foreach (var s in students)
                 {
-                    foreach (var s in students)
-                    {
-                        sw.WriteLine($"{s.StudentID}|{s.StudentName}|{(s.StudentGender ? "1" : "0")}" +
-                            $"|{s.StudentBirthDate.ToString("dd-MM-yyyy")}|{s.MajorID}|{s.UniversityID}");
-                    }
+                    sw.WriteLine($"{s.StudentID}|{s.StudentName}|{(s.StudentGender ? "1" : "0")}" +
+                        $"|{s.StudentBirthDate.ToString("dd-MM-yyyy")}|{s.MajorID}|{s.UniversityID}");
                 }
             }
-            catch (IOException e)
-            {
-                Console.WriteLine("Writing file - IOException error: " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Writing file - Exception error: " + e.Message);
-            }
-
         }
 
+        public void OverWriteStudentListToFile(List<Student> students)
+        {
+            using (StreamWriter sw = new StreamWriter(url))
+            {
+                foreach (var s in students)
+                {
+                    sw.WriteLine($"{s.StudentID}|{s.StudentName}|{(s.StudentGender ? "1" : "0")}" +
+                        $"|{s.StudentBirthDate.ToString("dd-MM-yyyy")}|{s.MajorID}|{s.UniversityID}");
+                }
+            }
+        }
 
         public void ShowStudentInfo()
         {
@@ -225,16 +225,26 @@ namespace STDIO_dotNet.Models
             {
                 Console.Write("Nhập mã số sinh viên cần thao tác: ");
                 studentID = Console.ReadLine();
-            } while (!ContainStudentID(StudentList, studentID));
+            } while (!ContainStudentID(studentID));
             return studentID;
         }
-        private bool ContainStudentID(List<Student> students, string studentID)
+        public bool ContainStudentID(string studentID)
         {
-            foreach (var s in students)
+            GetStudentFromFile();
+            foreach (var s in StudentList)
             {
-                if (s.StudentID == studentID) return true;
+                if (s.StudentID.ToLower().Equals(studentID.ToLower())) return true;
             }
             return false;
+        }
+
+        public void CopyStudentValue(Student SOrigin, Student SDestination)
+        {
+            SOrigin.StudentName = SDestination.StudentName;
+            SOrigin.StudentGender = SDestination.StudentGender;
+            SOrigin.StudentBirthDate = SDestination.StudentBirthDate;
+            SOrigin.MajorID = SDestination.MajorID;
+            SOrigin.UniversityID = SDestination.UniversityID;
         }
     }
 }

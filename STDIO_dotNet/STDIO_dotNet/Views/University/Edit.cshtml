@@ -1,0 +1,25 @@
+﻿@model University
+     
+<form asp-action="SubmitEdit" asp-controller="University" method="post">      
+          <div class="form-group row">
+            <label for="UniversityID" class="col-sm-2 col-form-label">ID</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" asp-for="@Model.UniversityID" name="UniversityID" readonly>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="UniversityName" class="col-sm-2 col-form-label">Tên chuyên ngành</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="UniversityName" asp-for="@Model.UniversityName" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="UniversityAbbr" class="col-sm-2 col-form-label">Viết tắt</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="UniversityAbbr" asp-for="@Model.UniversityAbbr" required>
+            </div>
+          </div>
+          
+          
+        <button type="submit" class="btn btn-primary">Save changes</button>
+</form>
